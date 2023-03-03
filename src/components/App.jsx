@@ -33,9 +33,10 @@ export class App extends Component {
         toast.warning(
           'Sorry, there are no images matching your search query. Please try again!'
         );
+        return;
       }
 
-      if (this.state.page === 1 && hits.length !== 0) {
+      if (this.state.page === 1) {
         toast.success(`${total} images found`);
       }
 

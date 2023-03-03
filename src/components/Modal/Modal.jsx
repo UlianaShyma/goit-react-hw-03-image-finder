@@ -18,15 +18,21 @@ export class Modal extends Component {
 
   handlePressEsc = e => {
     if (e.code === 'Escape') {
-      this.props.onCloseModal();
+      this.props.onClose();
+    }
+  };
+
+  handleBackdropClick = e => {
+    if (e.target === e.currentTarget) {
+      this.props.onClose();
     }
   };
 
   render() {
-    const { children, onClose } = this.props;
+    const { children } = this.props;
     return (
       <>
-        <Overlay onClick={onClose}>
+        <Overlay onClick={this.handleBackdropClick}>
           <ModalWindow>{children}</ModalWindow>
         </Overlay>
       </>
